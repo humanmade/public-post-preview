@@ -14,6 +14,8 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
         with:
+          # Check out the PR branch, not the detached merge commit, so the asset commit can be pushed.
+          ref: ${{ github.head_ref }}
           # Custom token to allow commits trigger other workflows.
           token: ${{ secrets.REPO_TOKEN }}
 
